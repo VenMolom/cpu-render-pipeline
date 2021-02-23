@@ -1,0 +1,19 @@
+Dodawanie obiektów:
+	Grupa "Add" pozwala na dodawanie nowych obiektów. Wszystkie nowe obiekty pojawiają się z pozycją (0, 0, 0).
+Edycja obiektów:
+	Wybranie obiektu na liście obiektów umożliwia jego edytowanie w grupie "Edit". Każdy typ obiektu ma inne parametry, które można edytować.
+Usuwanie obiektów:
+	Wybrany obiekt można usunąć używając przycisku "Delete" na dole panelu edycji. Nie można usunąć ostatniej kamery.
+Zapisywanie i wczytywanie sceny:
+	Zakładka "File" w pasku menu zawiera opcje "Save" i "Load" pozwalające na zapisanie sceny do pliku .gk4 oraz jej wczytanie z pliku o takim samym formacie. Zapisywanie nie zapisuje ustawionych tekstur i map normalnych.
+Opcje potoku renderowania:
+	Zakładka "Rendering" zawiera opcje pozwalające na włączenie i wyłączenie:
+		- obcinania ścian tylkich
+		- korekcji perspektyw
+		- buforowania głębi
+		- rysowania samych krawędzi
+	oraz zmianę koloru światła otoczenia.
+	
+Obsługa kamery:
+	Przeciąganie myszą po panelu rysowania pozwala na przesuwanie kamerą.
+	W połączeniu z SHIFT pozwala na obracanie kamerą.

@@ -1,0 +1,63 @@
+Legenda: 
+	- <Klasa/Namespace> - <opis> [(funkcja/e)]
+
+Dodawanie obiektów:
+	- Form1 - callbacki przycisków (add<obiekt>Button_Click())
+	- Scene - funkcje do dodawania obiektów do sceny (Add())
+	
+Usuwanie:
+	- Controls.ObjectControl - callback przycisku wywołujący odpowiednią metodę na podpiętym do kontrolki obiekcie
+	- Scene - funkcje usuwające obiekty ze sceny (Remove())
+	
+Edycja:
+	- Forms1 - zmiana wybranego obiektu na liście powoduje zmianę kontrolki (objectListBox_SelectedItemChanged())
+	- Controls - każdy typ obiektu ma własny typ kontrolki, która pozwala na edycje jego parametrów przez UI.
+	- Objects - odpowiednie właściwości i funkcje
+	
+Poruszanie kamerą:
+	- Forms1 - callbacki na eventy pictureBoxa (pictureBox_*())
+	
+Wczytywanie i zapisywanie:
+	- Forms1 - callbacki (load*(), save*())
+	- Serialization.SceneSerialization - klasa służąca do zapisu odpowiednich składowych sceny
+	- Scene - konstruktor z ^
+
+Potok renderowania:
+	- Rendering.Renderer - oprócz cały renderowania mieści się w tej klasie. Dalej opisze tylko miejsca w tym pliku, gdzie zaimplemetowane są funkcjonalności
+
+	Obcinanie:
+	- funkcja Clipping() wywoływana w funkcji Render
+
+	Backface culling:
+	- funkcja IsClockwise() wywoływana w funkcji Render
+	
+	Interpolacja atrybutów:
+	- obie metody interpolacji zaimplemetowane są w klasie Interpolation. Wykorzystywana jest ona w krawędzie (Edges.Edge) oraz w wypełnianiu linii (FillPixelsInRange())
+	
+	Rysowanie krawędzi:
+	- w funkcji Render() następuje wybór pomiędzy rysowaniem krawędzi (DrawPolygon()) i wypełnianiem ((FillPolygon())
+	
+	Z-buffering:
+	- w funkcji FillPixelsInRange() dla każdego pixela sprawdzany jest z bufor
+	
+	Cieniowanie Phonga:
+	- w funkcji FillPixelsInRange() dla każdego pixela obliczany jest kolor z zinterpolowanymi atrybutami. Odpowiada za to klasa Edges.Edge używana w AET oraz póżniejsza ręczna interpolacja dla linii
+	
+	Model oświetlenia Phonga:
+	- w funkcji FillPixelsInRange() kolor pixela obliczany jest z użyciem modelu Phonga. Dodatkowo ustalenie materiału możliwe jest w kontrolce obiektu
+	
+	Teksturowanie: 
+	- możliwość wyboru przypisania tekstury jest w kontrolce obiektu. Używana jest w FillPixelsInRange() jako kolor rozproszenia
+	
+	Mapowanie normalnych:
+	- możliwość wyboru przypisania mapy normalnych jest w kontrolce obiektu. Używana jest w FillPixelsInRange() do obliczania wektora normalnego
+	
+Macierze:
+	- Numeric.Matrix4x4 i Numeric.Matrix3x3 - odpowiednie metody statyczne
+	
+Skalowanie:
+	- Forms1 - callback do zmiany rozmiaru aplikacji (pictureBox_SizeChanged())
+	- Scene - zmiana aspektu aktywnej kamery (UpdateSize())
+	
+Klatki na sekundę:
+	- Forms1 - callback timera (timer1_Tick()) i rysowanie ilości klatek w pictureBox_Paint()
